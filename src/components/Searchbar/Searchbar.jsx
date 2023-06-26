@@ -1,7 +1,7 @@
 
 import css from './Searchbar.module.css';
 
-export const Searchbar = ({ onChange }) => {
+export const Searchbar = ({ value }) => {
    
 
     return (
@@ -17,7 +17,7 @@ export const Searchbar = ({ onChange }) => {
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
-            onChange={onChange}
+            onChange ={value}
           />
         </form>
       </header>
