@@ -24,8 +24,9 @@ export class ImageGallery extends Component {
     page: 1,
   };
 
-  loadMore = () => {
-      this.setState(prevState =>({ page: prevState.page + 1 }))
+  loadMore = (nextState) => {
+    this.setState(prevState => ({ page: prevState.page + 1 }))
+    if (nextState.value !== this.state.value) { this.setState({ page: 1 }) }
         console.log(`page:${this.state.page}`);
      }; 
   
@@ -48,17 +49,17 @@ export class ImageGallery extends Component {
     const { value } = this.props;
     const { page } = this.state;
     const images = await fetchApi(value, page);
-    this.setState({
-      images,
+    this.setState(prevState => ({
+      images: [...prevState.images, ...images],
       isLoading: false,
-    });
+    }));
 
   }
   
   
   render() {
     const { isLoading, images, page } = this.state;
-    console.log(`page:${page}`)
+    console.log(`page:${ page }`)
     
     return isLoading ? (
       <Loader />
@@ -68,7 +69,7 @@ export class ImageGallery extends Component {
           <ul className={css.ImageGallery}>
             <ImageGalleryItem images={images} />
           </ul>
-            <Button page={ page} loadMore={this.loadMore} />
+            <Button page={ page } loadMore={this.loadMore} />
         </div>
       )
     );}
