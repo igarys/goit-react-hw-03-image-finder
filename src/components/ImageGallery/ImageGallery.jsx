@@ -42,6 +42,8 @@ export class ImageGallery extends Component {
     }
   }
 
+//  return this.setState({ page: 1 });
+  
   async componentDidUpdate() {
     const { value } = this.props;
     const { page } = this.state;
@@ -52,7 +54,6 @@ export class ImageGallery extends Component {
     });
 
   }
-
   
   
   render() {
