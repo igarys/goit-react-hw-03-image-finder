@@ -14,6 +14,7 @@ const fetchApi = async (value, page) => {
   const response = await axios.get(
     `${API_URL}?key=${API_KEY}&q=${value}&per_page=12&page=${page}`
   );
+  console.log(` ${response.data.hits}`)
   return response.data.hits;
 };
 
@@ -24,9 +25,10 @@ export class ImageGallery extends Component {
     page: 1,
   };
 
+
   loadMore = (nextState) => {
     this.setState(prevState => ({ page: prevState.page + 1 }))
-    if (nextState.value !== this.state.value) { this.setState({ page: 1 }) }
+    if (nextState.value !== this.props.value) { this.setState({ page: 1 }) }
         console.log(`page:${this.state.page}`);
      }; 
   
@@ -45,12 +47,12 @@ export class ImageGallery extends Component {
 
 //  return this.setState({ page: 1 });
   
-  async componentDidUpdate() {
+ async componentDidUpdate() {
     const { value } = this.props;
     const { page } = this.state;
-    const images = await fetchApi(value, page);
+    const images =  await fetchApi(value,page);
     this.setState(prevState => ({
-      images: [...prevState.images, ...images],
+      images: [prevState.images, images],
       isLoading: false,
     }));
 
@@ -59,7 +61,14 @@ export class ImageGallery extends Component {
   
   render() {
     const { isLoading, images, page } = this.state;
-    console.log(`page:${ page }`)
+    const { value } = this.props;
+
+    console.log(`page:${page}`)
+    console.log(`gallery value:${value}`);
+    console.log(`images:${images}`);
+
+
+    
     
     return isLoading ? (
       <Loader />
