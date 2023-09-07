@@ -3,8 +3,8 @@ import { ImageGallery } from "./ImageGallery";
 import { Searchbar } from "./Searchbar";
 import './styles.css';
 import {fetchApi} from '../services'
-import { Button } from "./Button ";
-import { isDisabled } from "@testing-library/user-event/dist/utils";
+// import { Button } from "./Button ";
+
 
 export class App extends Component {
   state = {
