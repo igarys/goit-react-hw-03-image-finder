@@ -39,7 +39,7 @@ export class App extends Component {
     
   };
 
-  message = () => `Sorry... There is no ${this.value} images :(`;
+  // message = () => `Sorry... There is no ${this.value} images :(`;
   
   async componentDidUpdate(prevState, nextState) {
     if (nextState.value !== this.state.value ||
@@ -70,7 +70,7 @@ export class App extends Component {
           page={page}
           loadMore={this.loadMore}
           isLoading={isLoading}
-          message={this.message}
+          // message={this.message}
         />
       </div>
     );

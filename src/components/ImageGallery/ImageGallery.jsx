@@ -9,14 +9,17 @@ export const ImageGallery = ({ isLoading, images, page, loadMore, message }) => 
 
   return isLoading ? (
     <Loader />
-  ) : (images.length > 0 && (
+  ) : (
+    images.length > 0 && (
       <div>
         <ul className={css.ImageGallery}>
-          <ImageGalleryItem images={images} />
+          {images.map(image => (
+            <ImageGalleryItem key={ image.id} image={image} />
+          ))}
         </ul>
         <Button page={page} loadMore={loadMore} />
       </div>
-    ) 
+    )
     //       && (
 
     // images.length > 12 && (

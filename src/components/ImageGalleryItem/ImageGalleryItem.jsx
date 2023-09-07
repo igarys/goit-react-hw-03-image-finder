@@ -8,38 +8,38 @@ export class ImageGalleryItem extends Component {
     isOpen: false,
   };
 
-  handleClick = largeImageURL => {
+  handleClick = () => {
     this.setState(modal => ({ isOpen: !modal.isOpen }));
-    console.log(largeImageURL);
   };
   handleKeyDown = evt => {
-    if (evt.key === "Escape") {
-      this.setState({isOpen: false})
+    if (evt.key === 'Escape') {
+      this.setState({ isOpen: false });
     }
- };
-  
-  
+  };
+  // message = () => `Sorry... There is no ${this.value} images :(`;
+
   render() {
     const { isOpen } = this.state;
-    const { images } = this.props;
+    const { image } = this.props;
 
-    return images?.map(({ id, webformatURL, tags, largeImageURL }) => (
-      <li key={id} className={css.ImageGalleryItem}>
+    return (
+  
+      <li key={image.id} className={css.ImageGalleryItem}>
         <img
           className={css.ImageGalleryItemImage}
-          src={webformatURL}
-          alt={tags}
+          src={image.webformatURL}
+          alt={image.tags}
           onClick={this.handleClick}
         />
         {isOpen && (
           <Modal
-            largeImageURL={largeImageURL}
-            alt={tags}
+            largeImageURL={image.largeImageURL}
+            alt={image.tags}
             handleClick={this.handleClick}
             handleKeyDown={this.handleKeyDown}
           />
         )}
       </li>
-    ));
+    )
   }
 }
