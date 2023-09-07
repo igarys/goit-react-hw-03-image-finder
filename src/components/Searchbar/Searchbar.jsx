@@ -2,26 +2,7 @@ import { Component } from 'react';
 import css from './Searchbar.module.css';
 
 export class Searchbar extends Component {
-  // state = {
-  //   inputValue: '',
-  //   value: '',
-  // };
-
-  // onChange = e => {
-
-  //   this.setState({ inputValue: e.target.value});
-  //   console.log(`input e target : ${e.target.value}`);
-  //   console.log(`inputVal : ${this.state.inputValue}`);
-
-  // };
-  // onSubmit = (e) => {
-  //   e.preventDefault();
-  //   this.setState({value: this.state.inputValue})
-  // }
-
   render() {
-    console.log(`input : ${this.props.value}`);
-    // const {value, inputValue} = this.state;
     const { onSubmit, onChange, value, inputValue } = this.props;
 
     return (
