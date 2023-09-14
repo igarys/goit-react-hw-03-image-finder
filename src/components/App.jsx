@@ -3,7 +3,6 @@ import { ImageGallery } from "./ImageGallery";
 import { Searchbar } from "./Searchbar";
 import './styles.css';
 import {fetchApi} from '../services'
-// import { Button } from "./Button ";
 
 
 export class App extends Component {
@@ -17,8 +16,6 @@ export class App extends Component {
 
   onChange = e => {
     this.setState({ inputValue: e.target.value });
-    console.log(`input e target : ${e.target.value}`);
-    console.log(`inputVal : ${this.state.inputValue}`);
   };
   onSubmit = (e, nextState) => {
     e.preventDefault();
@@ -29,15 +26,9 @@ export class App extends Component {
     this.setState({ page: 1 });
   };
 
-  // handleKeyDown = evt => {
-  //   console.log('Clicked ESC');
-  //   if (evt.key === 'Escape') {
-  //     this.setState(modal => ({ isOpen: !modal.isOpen }));
-  //   }
-  // };
+
   componentDidMount() {
     this.setState({ isLoading: false });
-    // document.addEventListener("keydown", this.handleKeyDown)
   }
 
   loadMore = () => {
@@ -62,7 +53,6 @@ export class App extends Component {
 
   render() {
     const { page, value, inputValue, images, isLoading } = this.state;
-    console.log(`App value: ${value}`);
 
     return (
       <div className="App">
@@ -77,7 +67,6 @@ export class App extends Component {
           page={page}
           loadMore={this.loadMore}
           isLoading={isLoading}
-          handleKeyDown={this.handleKeyDown}
           // message={this.message}
         />
       </div>

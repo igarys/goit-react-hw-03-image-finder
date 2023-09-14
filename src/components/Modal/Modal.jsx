@@ -1,13 +1,30 @@
+import { Component } from 'react';
 import css from './Modal.module.css';
 
-export const Modal = ({ largeImageURL, alt, handleClick, handleKeyDown }) => {
-  return (
-    <div tabIndex={0} onKeyDown={handleKeyDown}>
-      <div className={css.Overlay}>
-        <div className={css.Modal} onClick={handleClick}>
-          <img src={largeImageURL} alt={alt} />
+export class Modal extends Component {
+  componentDidMount() {
+    document.addEventListener('keydown', this.props.handleKeyDown);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.props.handleKeyDown);
+  }
+
+  render() {
+    const { largeImageURL, alt, handleClick } = this.props;
+
+    return (
+      <div>
+        <div className={css.Overlay}>
+          <div
+            className={css.Modal}
+            onClick={handleClick}
+            onKeyDown={this.handleKeyDown}
+          >
+            <img src={largeImageURL} alt={alt} />
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}

@@ -11,27 +11,19 @@ export class ImageGalleryItem extends Component {
   handleClick = () => {
     this.setState(modal => ({ isOpen: !modal.isOpen }));
   };
-  
-  handleKeyDown = evt => {
-      document.addEventListener('keydown', () => {
-        console.log('Clicked ESC');
-        if (evt.key === 'Escape') {
-          this.setState({ isOpen: false });
-        }
-      });
+
+  handleKeyDown = (evt) => {
+    if (evt.key === 'Escape') {
+      this.setState(modal => ({ isOpen: !modal.isOpen }));
+    }
   }
-  // handleKeyDown = evt => {
-  //   console.log('Clicked ESC');
-  //   if (evt.key === 'Escape') {
-  //     this.setState(modal => ({ isOpen: !modal.isOpen }));
-  //   }
-  // };
+
 
   // message = () => `Sorry... There is no ${this.value} images :(`;
 
   render() {
     const { isOpen } = this.state;
-    const { image} = this.props;
+    const { image } = this.props;
 
     return (
       <li key={image.id} className={css.ImageGalleryItem}>

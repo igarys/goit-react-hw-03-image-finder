@@ -4,7 +4,7 @@ import { Loader } from "components/Loader";
 import { Button } from "components/Button ";
 
 
-export const ImageGallery = ({ isLoading, images, page, loadMore, message, handleKeyDown }) => {
+export const ImageGallery = ({ isLoading, images, page, loadMore}) => {
 
 
   return isLoading ? (
@@ -14,7 +14,7 @@ export const ImageGallery = ({ isLoading, images, page, loadMore, message, handl
       <div>
         <ul className={css.ImageGallery}>
           {images.map(image => (
-            <ImageGalleryItem key={image.id} image={image} handleKeyDown={handleKeyDown} />
+            <ImageGalleryItem key={image.id} image={image} />
           ))}
         </ul>
         <Button page={page} loadMore={loadMore} />
